@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Workflow - WorkflowAI Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h1 class="logo">WorkflowAI</h1>
+          <button class="close-btn" id="closeSidebar">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+          </a>
+          <a href="my-workflows.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            My Workflows
+          </a>
+          <a href="create-workflow.html" class="nav-item active">
+            <i data-lucide="plus"></i>
+            Create Workflow
+          </a>
+          <a href="templates.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            Templates
+          </a>
+          <a href="billing.html" class="nav-item">
+            <i data-lucide="credit-card"></i>
+            Billing
+          </a>
+          <button class="nav-item">
+            <i data-lucide="log-out"></i>
+            Logout
+          </button>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+          <div class="navbar-left">
+            <button class="menu-btn" id="menuBtn">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="search-container">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" placeholder="Search..." class="search-input" />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button class="notification-btn">
+              <i data-lucide="bell"></i>
+            </button>
+            <div class="user-menu">
+              <button class="user-avatar" id="userMenuBtn">
+                <img
+                  src="/placeholder-user.png"
+                  alt="User"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                />
+                <div class="avatar-fallback">JD</div>
+              </button>
+              <div class="dropdown-menu" id="userDropdown">
+                <button class="dropdown-item">
+                  <i data-lucide="user"></i>
+                  Profile
+                </button>
+                <button class="dropdown-item">
+                  <i data-lucide="log-out"></i>
+                  Log out
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Create Workflow Content -->
+        <main class="dashboard-main">
+          <div class="dashboard-header">
+            <h2>Create New Workflow</h2>
+            <p>Build custom automation workflows from scratch</p>
+          </div>
+
+          <!-- Workflow Builder -->
+          <div class="workflow-builder">
+            <div class="builder-sidebar">
+              <h3>Workflow Steps</h3>
+              <div class="step-categories">
+                <div class="step-category">
+                  <h4>Triggers</h4>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="clock"></i>
+                    <span>Schedule</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="mail"></i>
+                    <span>Email Received</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="webhook"></i>
+                    <span>Webhook</span>
+                  </div>
+                </div>
+                <div class="step-category">
+                  <h4>Actions</h4>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="send"></i>
+                    <span>Send Email</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="database"></i>
+                    <span>Update Database</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="bell"></i>
+                    <span>Send Notification</span>
+                  </div>
+                </div>
+                <div class="step-category">
+                  <h4>Logic</h4>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="git-branch"></i>
+                    <span>Condition</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="repeat"></i>
+                    <span>Loop</span>
+                  </div>
+                  <div class="step-item" draggable="true">
+                    <i data-lucide="pause"></i>
+                    <span>Delay</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="builder-canvas">
+              <div class="canvas-header">
+                <input
+                  type="text"
+                  placeholder="Untitled Workflow"
+                  class="workflow-name-input"
+                />
+                <div class="canvas-actions">
+                  <button class="btn-secondary">
+                    <i data-lucide="save"></i>
+                    Save Draft
+                  </button>
+                  <button class="btn-primary">
+                    <i data-lucide="play"></i>
+                    Test Workflow
+                  </button>
+                </div>
+              </div>
+
+              <div class="canvas-area">
+                <div class="canvas-placeholder">
+                  <div class="placeholder-content">
+                    <i data-lucide="plus-circle"></i>
+                    <h3>Start Building Your Workflow</h3>
+                    <p>
+                      Drag and drop components from the sidebar to create your
+                      automation workflow
+                    </p>
+                    <button class="btn-primary">
+                      <i data-lucide="zap"></i>
+                      Add Trigger
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Mobile Overlay -->
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

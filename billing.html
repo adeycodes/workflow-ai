@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing - WorkflowAI Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h1 class="logo">WorkflowAI</h1>
+          <button class="close-btn" id="closeSidebar">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+          </a>
+          <a href="my-workflows.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            My Workflows
+          </a>
+          <a href="create-workflow.html" class="nav-item">
+            <i data-lucide="plus"></i>
+            Create Workflow
+          </a>
+          <a href="templates.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            Templates
+          </a>
+          <a href="billing.html" class="nav-item active">
+            <i data-lucide="credit-card"></i>
+            Billing
+          </a>
+          <button class="nav-item">
+            <i data-lucide="log-out"></i>
+            Logout
+          </button>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+          <div class="navbar-left">
+            <button class="menu-btn" id="menuBtn">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="search-container">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" placeholder="Search..." class="search-input" />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button class="notification-btn">
+              <i data-lucide="bell"></i>
+            </button>
+            <div class="user-menu">
+              <button class="user-avatar" id="userMenuBtn">
+                <img
+                  src="/placeholder-user.png"
+                  alt="User"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                />
+                <div class="avatar-fallback">JD</div>
+              </button>
+              <div class="dropdown-menu" id="userDropdown">
+                <button class="dropdown-item">
+                  <i data-lucide="user"></i>
+                  Profile
+                </button>
+                <button class="dropdown-item">
+                  <i data-lucide="log-out"></i>
+                  Log out
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Billing Content -->
+        <main class="dashboard-main">
+          <div class="dashboard-header">
+            <h2>Billing & Subscription</h2>
+            <p>Manage your subscription and billing information</p>
+          </div>
+
+          <!-- Current Plan -->
+          <div class="billing-section">
+            <div class="section-header">
+              <h3>Current Plan</h3>
+              <p>Your active subscription details</p>
+            </div>
+            <div class="plan-card">
+              <div class="plan-header">
+                <div class="plan-info">
+                  <h4 class="plan-name">Professional Plan</h4>
+                  <p class="plan-description">
+                    Perfect for growing teams and businesses
+                  </p>
+                </div>
+                <div class="plan-price">
+                  <span class="price">$49</span>
+                  <span class="period">/month</span>
+                </div>
+              </div>
+              <div class="plan-features">
+                <div class="feature">
+                  <i data-lucide="check"></i>
+                  <span>Unlimited workflows</span>
+                </div>
+                <div class="feature">
+                  <i data-lucide="check"></i>
+                  <span>50,000 workflow runs/month</span>
+                </div>
+                <div class="feature">
+                  <i data-lucide="check"></i>
+                  <span>Priority support</span>
+                </div>
+                <div class="feature">
+                  <i data-lucide="check"></i>
+                  <span>Advanced analytics</span>
+                </div>
+              </div>
+              <div class="plan-actions">
+                <button class="btn-secondary">Change Plan</button>
+                <button class="btn-danger">Cancel Subscription</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage Overview -->
+          <div class="overview-cards">
+            <div class="card card-blue">
+              <div class="card-header">
+                <span class="card-title">Workflow Runs</span>
+                <div class="card-icon card-icon-blue">
+                  <i data-lucide="activity"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">32,847</div>
+                <p class="card-description">of 50,000 this month</p>
+              </div>
+            </div>
+            <div class="card card-emerald">
+              <div class="card-header">
+                <span class="card-title">Next Billing</span>
+                <div class="card-icon card-icon-emerald">
+                  <i data-lucide="calendar"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">Dec 15</div>
+                <p class="card-description">2024 - $49.00</p>
+              </div>
+            </div>
+            <div class="card card-amber">
+              <div class="card-header">
+                <span class="card-title">Storage Used</span>
+                <div class="card-icon card-icon-amber">
+                  <i data-lucide="hard-drive"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">2.4 GB</div>
+                <p class="card-description">of 10 GB available</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing History -->
+          <div class="billing-section">
+            <div class="section-header">
+              <h3>Billing History</h3>
+              <p>Your recent invoices and payments</p>
+            </div>
+            <div class="billing-table">
+              <div class="table-header">
+                <div class="table-cell">Invoice</div>
+                <div class="table-cell">Date</div>
+                <div class="table-cell">Amount</div>
+                <div class="table-cell">Status</div>
+                <div class="table-cell">Actions</div>
+              </div>
+              <div class="table-row">
+                <div class="table-cell">
+                  <div class="invoice-info">
+                    <div class="invoice-number">#INV-2024-001</div>
+                    <div class="invoice-description">
+                      Professional Plan - November 2024
+                    </div>
+                  </div>
+                </div>
+                <div class="table-cell">Nov 15, 2024</div>
+                <div class="table-cell">$49.00</div>
+                <div class="table-cell">
+                  <span class="status-badge status-paid">Paid</span>
+                </div>
+                <div class="table-cell">
+                  <button class="action-btn" title="Download">
+                    <i data-lucide="download"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="table-row">
+                <div class="table-cell">
+                  <div class="invoice-info">
+                    <div class="invoice-number">#INV-2024-002</div>
+                    <div class="invoice-description">
+                      Professional Plan - October 2024
+                    </div>
+                  </div>
+                </div>
+                <div class="table-cell">Oct 15, 2024</div>
+                <div class="table-cell">$49.00</div>
+                <div class="table-cell">
+                  <span class="status-badge status-paid">Paid</span>
+                </div>
+                <div class="table-cell">
+                  <button class="action-btn" title="Download">
+                    <i data-lucide="download"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="table-row">
+                <div class="table-cell">
+                  <div class="invoice-info">
+                    <div class="invoice-number">#INV-2024-003</div>
+                    <div class="invoice-description">
+                      Professional Plan - September 2024
+                    </div>
+                  </div>
+                </div>
+                <div class="table-cell">Sep 15, 2024</div>
+                <div class="table-cell">$49.00</div>
+                <div class="table-cell">
+                  <span class="status-badge status-paid">Paid</span>
+                </div>
+                <div class="table-cell">
+                  <button class="action-btn" title="Download">
+                    <i data-lucide="download"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="billing-section">
+            <div class="section-header">
+              <h3>Payment Method</h3>
+              <p>Manage your payment information</p>
+            </div>
+            <div class="payment-card">
+              <div class="payment-info">
+                <div class="payment-icon">
+                  <i data-lucide="credit-card"></i>
+                </div>
+                <div class="payment-details">
+                  <div class="card-number">•••• •••• •••• 4242</div>
+                  <div class="card-expiry">Expires 12/26</div>
+                </div>
+              </div>
+              <div class="payment-actions">
+                <button class="btn-secondary">Update Card</button>
+                <button class="btn-secondary">Add New Card</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Mobile Overlay -->
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
