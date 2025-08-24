@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../frontend/css/login.css" />
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
     <!-- nav -->
@@ -40,23 +40,21 @@
               <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#features">Features</a>
+              <a class="nav-link" href="../home.html#features">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#templates">Templates</a>
+              <a class="nav-link" href="../home.html#templates">Templates</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pricing">Pricing</a>
+              <a class="nav-link" href="./home.html#pricing">Pricing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Help</a>
+              <a class="nav-link" href="../home.html#contact">Help</a>
             </li>
           </ul>
           <div class="nav-buttons">
             <button class="btn btn-secondary">
-              <a href="#login" target="_blank" rel="noopener noreferrer"
-                >Login</a
-              >
+              <a href="/" target="_blank" rel="noopener noreferrer">Login</a>
             </button>
             <button class="btn btn-primary">
               <a href="./signup.html" target="_blank" rel="noopener noreferrer"
@@ -124,9 +122,8 @@
               <a href="#" class="forgot-password">Forgot password?</a>
             </div>
 
-            <button type="submit" class="btn btn-login w-100">
-              Login to My Account
-            </button>
+            <!-- 🔥 Fixed: Removed <a> from inside button -->
+            <button type="submit" class="btn btn-login w-100">LOGIN</button>
 
             <div class="divider">or continue with</div>
 
@@ -136,7 +133,7 @@
             </button>
 
             <div class="signup-link">
-              Don't have an account? <a href="#">Sign Up</a>
+              Don't have an account? <a href="/signup.html">Sign Up</a>
             </div>
           </form>
         </div>
@@ -154,7 +151,7 @@
             </p>
             <div class="social-icons mt-4">
               <a href="#" class="text-decoration-none"
-                ><i class="fab fa-facebook-f text-decoration-none"></i
+                ><i class="fab fa-facebook-f"></i
               ></a>
               <a href="#" class="text-decoration-none"
                 ><i class="fab fa-twitter"></i
@@ -292,7 +289,6 @@
 
         // Show error function
         function showError(message) {
-          // Create or update error element
           let errorElement = document.getElementById("loginError");
           if (!errorElement) {
             errorElement = document.createElement("div");
@@ -304,7 +300,6 @@
           errorElement.textContent = message;
           errorElement.classList.add("shake");
 
-          // Remove shake animation after it completes
           setTimeout(() => {
             errorElement.classList.remove("shake");
           }, 500);
@@ -312,34 +307,16 @@
 
         // Simulate login
         function simulateLogin() {
-          // Show loading state
           const loginButton = loginForm.querySelector('button[type="submit"]');
           const originalButtonText = loginButton.innerHTML;
           loginButton.innerHTML =
             '<i class="fas fa-spinner fa-spin"></i> Logging in...';
           loginButton.disabled = true;
 
-          // Simulate API call
+          // Simulate API delay
           setTimeout(() => {
-            // For demo purposes - successful login
-            document.querySelector(".welcome-section").innerHTML = `
-                        <div class="text-center py-5">
-                            <i class="fas fa-check-circle fa-5x mb-4" style="color: #4CAF50;"></i>
-                            <h2>Login Successful!</h2>
-                            <p class="mt-3">Redirecting to your dashboard...</p>
-                        </div>
-                    `;
-
-            // Reset form button after successful login
-            loginButton.innerHTML = originalButtonText;
-            loginButton.disabled = false;
-
-            // Simulate redirect to dashboard
-            setTimeout(() => {
-              alert(
-                "You would be redirected to your dashboard now. This is a demo."
-              );
-            }, 1500);
+            // Redirect to dashboard after success
+            window.location.href = "dashboard.html";
           }, 2000);
         }
       });

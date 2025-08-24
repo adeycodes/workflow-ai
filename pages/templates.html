@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Templates - WorkflowAI Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/templates.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h1 class="logo">WorkflowAI</h1>
+          <button class="close-btn" id="closeSidebar">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+          </a>
+          <a href="my-workflows.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            My Workflows
+          </a>
+          <a href="create-workflow.html" class="nav-item">
+            <i data-lucide="plus"></i>
+            Create Workflow
+          </a>
+          <a href="templates.html" class="nav-item active">
+            <i data-lucide="file-text"></i>
+            Templates
+          </a>
+          <a href="billing.html" class="nav-item">
+            <i data-lucide="credit-card"></i>
+            Billing
+          </a>
+          <button class="nav-item" id="logoutBtn">
+            <i data-lucide="log-out"></i>
+            Logout
+          </button>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+          <div class="navbar-left">
+            <button class="menu-btn" id="menuBtn">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="search-container">
+              <i data-lucide="search" class="search-icon"></i>
+              <input
+                type="text"
+                placeholder="Search templates..."
+                class="search-input"
+              />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button class="notification-btn">
+              <i data-lucide="bell"></i>
+            </button>
+            <div class="user-menu">
+              <button class="user-avatar" id="userMenuBtn">
+                <img
+                  src="/placeholder-user.png"
+                  alt="User"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                />
+                <div class="avatar-fallback">JD</div>
+              </button>
+              <div class="dropdown-menu" id="userDropdown">
+                <button class="dropdown-item">
+                  <i data-lucide="user"></i>
+                  Profile
+                </button>
+                <button class="dropdown-item" id="logoutDropdownBtn">
+                  <i data-lucide="log-out"></i>
+                  Log out
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Templates Content -->
+        <main class="dashboard-main">
+          <div class="dashboard-header">
+            <h2>Workflow Templates</h2>
+            <p>Choose from ready-to-use templates for Nigerian businesses</p>
+          </div>
+
+          <section class="templates-section">
+            <div class="container">
+              <div class="row g-4">
+                <!-- Template 1 -->
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/ecommerce.svg"
+                      alt="E-commerce Workflow"
+                      class="template-img"
+                    />
+                    <h4>E-commerce Order Processing</h4>
+                    <p class="text-muted">
+                      Automatically capture WhatsApp orders and update inventory
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Template 2 -->
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/social-media.svg"
+                      alt="Social Media Workflow"
+                      class="template-img"
+                    />
+                    <h4>Social Media to Spreadsheet</h4>
+                    <p class="text-muted">
+                      Capture leads from social media into your CRM
+                      automatically and read metrics in real time
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Template 3 -->
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/customer-service.svg"
+                      alt="Follow-up Workflow"
+                      class="template-img"
+                    />
+                    <h4>Customer Follow-up Sequence</h4>
+                    <p class="text-muted">
+                      Automate post-purchase follow-ups to boost repeat sales
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+
+                <!-- More Templates (Optional) -->
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/invoicing.svg"
+                      alt="Invoicing Workflow"
+                      class="template-img"
+                    />
+                    <h4>Automated Invoicing</h4>
+                    <p class="text-muted">
+                      Send invoices via email and track payments automatically
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/payroll.svg"
+                      alt="Payroll Workflow"
+                      class="template-img"
+                    />
+                    <h4>Payroll Automation</h4>
+                    <p class="text-muted">
+                      Process salaries and notify employees on payday
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="template-card">
+                    <img
+                      src="../assets/survey.svg"
+                      alt="Survey Workflow"
+                      class="template-img"
+                    />
+                    <h4>Customer Feedback Loop</h4>
+                    <p class="text-muted">
+                      Send surveys after service and analyze responses
+                    </p>
+                    <button class="btn btn-secondary w-100">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- Mobile Overlay -->
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.getElementById("menuBtn");
+        const closeSidebar = document.getElementById("closeSidebar");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const sidebar = document.getElementById("sidebar"); // ✅ Added
+        const userMenuBtn = document.getElementById("userMenuBtn");
+        const userDropdown = document.getElementById("userDropdown");
+
+        // === SIDEBAR TOGGLE (Fixed) ===
+        menuBtn.addEventListener("click", () => {
+          sidebar.classList.add("open");
+          mobileOverlay.classList.add("show");
+          document.body.style.overflow = "hidden"; // Prevent background scroll
+        });
+
+        closeSidebar.addEventListener("click", () => {
+          sidebar.classList.remove("open");
+          mobileOverlay.classList.remove("show");
+          document.body.style.overflow = ""; // Restore scroll
+        });
+
+        mobileOverlay.addEventListener("click", () => {
+          sidebar.classList.remove("open");
+          mobileOverlay.classList.remove("show");
+          document.body.style.overflow = "";
+        });
+
+        // === USER DROPDOWN TOGGLE ===
+        userMenuBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle("show");
+        });
+
+        // Close dropdown on outside click
+        document.addEventListener("click", () => {
+          userDropdown.classList.remove("show");
+        });
+
+        userDropdown.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+
+        // === LOGOUT BUTTON SIMULATION ===
+        function setupLogoutButton(button) {
+          button.addEventListener("click", function () {
+            // Prevent multiple clicks
+            if (button.disabled) return;
+
+            // Replace content with spinner
+            button.innerHTML = "";
+            const spinner = document.createElement("i");
+            spinner.setAttribute("data-lucide", "loader");
+            spinner.style.animation = "spin 1s linear infinite";
+            button.appendChild(spinner);
+            button.disabled = true;
+
+            // Re-render Lucide icons
+            lucide.createIcons();
+
+            // Redirect after delay
+            setTimeout(() => {
+              window.location.href = "login.html"; // Change if needed
+            }, 1500);
+          });
+        }
+
+        // Apply to both logout buttons
+        const logoutBtn = document.getElementById("logoutBtn");
+        const logoutDropdownBtn = document.getElementById("logoutDropdownBtn");
+
+        if (logoutBtn) setupLogoutButton(logoutBtn);
+        if (logoutDropdownBtn) setupLogoutButton(logoutDropdownBtn);
+      });
+    </script>
+  </body>
+</html>

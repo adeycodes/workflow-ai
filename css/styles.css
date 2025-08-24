@@ -20,6 +20,15 @@ body {
   color: #0f172a;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
 /* === Dashboard Layout === */
 .dashboard-container {
   display: flex;
@@ -38,6 +47,7 @@ body {
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 50;
+  color: white;
 }
 
 .sidebar.open {
@@ -650,109 +660,56 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 24px;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .template-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
   border-color: #cbd5e1;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.template-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.template-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 16px;
+  background-color: #f8fafc;
 }
 
-.template-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.template-icon-blue {
-  background-color: #dbeafe;
-  color: #2563eb;
-}
-
-.template-icon-emerald {
-  background-color: #d1fae5;
-  color: #059669;
-}
-
-.template-icon-amber {
-  background-color: #fef3c7;
-  color: #d97706;
-}
-
-.template-icon-purple {
-  background-color: #ede9fe;
-  color: #7c3aed;
-}
-
-.template-icon-red {
-  background-color: #fee2e2;
-  color: #dc2626;
-}
-
-.template-icon-teal {
-  background-color: #ccfbf1;
-  color: #0d9488;
-}
-
-.template-badge {
-  padding: 4px 8px;
-  background-color: #fef3c7;
-  color: #92400e;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.template-content {
-  margin-bottom: 20px;
-}
-
-.template-title {
-  font-size: 18px;
+.template-card h4 {
+  font-size: 1.25rem;
   font-weight: 600;
   color: #0f172a;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
-.template-description {
-  font-size: 14px;
+.template-card p {
+  font-size: 0.95rem;
   color: #475569;
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-.template-stats {
-  display: flex;
-  gap: 16px;
+.template-card .btn-secondary {
+  padding: 10px 0;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.template-stat {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: #6b7280;
-}
-
-.template-stat i {
-  width: 14px;
-  height: 14px;
-}
-
-.template-actions {
-  display: flex;
-  gap: 12px;
+.template-card .btn-secondary:hover {
+  background-color: #f1f5f9;
+  border-color: #9ca3af;
+  color: #0f172a;
 }
 
 /* === Billing Styles === */

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorkflowAI Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h1 class="logo">WorkflowAI</h1>
+          <button class="close-btn" id="closeSidebar">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item active">
+            <i data-lucide="bar-chart-3"></i>
+            Dashboard
+          </a>
+          <a href="my-workflows.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            My Workflows
+          </a>
+          <a href="create-workflow.html" class="nav-item">
+            <i data-lucide="plus"></i>
+            Create Workflow
+          </a>
+          <a href="templates.html" class="nav-item">
+            <i data-lucide="file-text"></i>
+            Templates
+          </a>
+          <a href="billing.html" class="nav-item">
+            <i data-lucide="credit-card"></i>
+            Billing
+          </a>
+          <!-- 🔥 Logout button (fixed: no <a> inside button) -->
+          <button class="nav-item" id="logoutBtn">
+            <i data-lucide="log-out"></i>
+            Log out
+          </button>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+          <div class="navbar-left">
+            <button class="menu-btn" id="menuBtn">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="search-container">
+              <i data-lucide="search" class="search-icon"></i>
+              <input
+                type="text"
+                placeholder="Search workflows..."
+                class="search-input"
+              />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button class="notification-btn">
+              <i data-lucide="bell"></i>
+            </button>
+            <div class="user-menu">
+              <button class="user-avatar" id="userMenuBtn">
+                <img
+                  src="/placeholder-user.png"
+                  alt="User"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                />
+                <div class="avatar-fallback">JD</div>
+              </button>
+              <div class="dropdown-menu" id="userDropdown">
+                <button class="dropdown-item">
+                  <i data-lucide="user"></i>
+                  Profile
+                </button>
+                <!-- 🔥 Dropdown logout button -->
+                <button class="dropdown-item" id="logoutDropdownBtn">
+                  <i data-lucide="log-out"></i>
+                  Log out
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-main">
+          <div class="dashboard-header">
+            <h2>Dashboard</h2>
+            <p>Monitor and manage your workflow automation</p>
+          </div>
+
+          <!-- Overview Cards -->
+          <div class="overview-cards">
+            <div class="card card-blue">
+              <div class="card-header">
+                <span class="card-title">Active Workflows</span>
+                <div class="card-icon card-icon-blue">
+                  <i data-lucide="play"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">24</div>
+                <p class="card-description">+2 from last month</p>
+              </div>
+            </div>
+            <div class="card card-emerald">
+              <div class="card-header">
+                <span class="card-title">Runs Today</span>
+                <div class="card-icon card-icon-emerald">
+                  <i data-lucide="bar-chart-3"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">1,247</div>
+                <p class="card-description">+12% from yesterday</p>
+              </div>
+            </div>
+            <div class="card card-amber">
+              <div class="card-header">
+                <span class="card-title">Errors</span>
+                <div class="card-icon card-icon-amber">
+                  <i data-lucide="alert-circle"></i>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="card-value">3</div>
+                <p class="card-description">-2 from yesterday</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Workflow List -->
+          <div class="workflow-section">
+            <div class="section-header">
+              <h3>Recent Workflows</h3>
+              <p>Manage and monitor your automation workflows</p>
+            </div>
+            <div class="workflow-list" id="workflowList">
+              <!-- Workflows will be populated by JavaScript -->
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <!-- Mobile Overlay -->
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.getElementById("menuBtn");
+        const closeSidebar = document.getElementById("closeSidebar");
+        const mobileOverlay = document.getElementById("mobileOverlay");
+        const sidebar = document.getElementById("sidebar"); // ✅ Added
+        const userMenuBtn = document.getElementById("userMenuBtn");
+        const userDropdown = document.getElementById("userDropdown");
+
+        // === SIDEBAR TOGGLE (Fixed) ===
+        menuBtn.addEventListener("click", () => {
+          sidebar.classList.add("open");
+          mobileOverlay.classList.add("show");
+          document.body.style.overflow = "hidden"; // Prevent background scroll
+        });
+
+        closeSidebar.addEventListener("click", () => {
+          sidebar.classList.remove("open");
+          mobileOverlay.classList.remove("show");
+          document.body.style.overflow = ""; // Restore scroll
+        });
+
+        mobileOverlay.addEventListener("click", () => {
+          sidebar.classList.remove("open");
+          mobileOverlay.classList.remove("show");
+          document.body.style.overflow = "";
+        });
+
+        // === USER DROPDOWN TOGGLE ===
+        userMenuBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle("show");
+        });
+
+        // Close dropdown on outside click
+        document.addEventListener("click", () => {
+          userDropdown.classList.remove("show");
+        });
+
+        userDropdown.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+
+        // === LOGOUT BUTTON SIMULATION ===
+        function setupLogoutButton(button) {
+          button.addEventListener("click", function () {
+            // Prevent multiple clicks
+            if (button.disabled) return;
+
+            // Replace content with spinner
+            button.innerHTML = "";
+            const spinner = document.createElement("i");
+            spinner.setAttribute("data-lucide", "loader");
+            spinner.style.animation = "spin 1s linear infinite";
+            button.appendChild(spinner);
+            button.disabled = true;
+
+            // Re-render Lucide icons
+            lucide.createIcons();
+
+            // Redirect after delay
+            setTimeout(() => {
+              window.location.href = "login.html"; // Change if needed
+            }, 1500);
+          });
+        }
+
+        // Apply to both logout buttons
+        const logoutBtn = document.getElementById("logoutBtn");
+        const logoutDropdownBtn = document.getElementById("logoutDropdownBtn");
+
+        if (logoutBtn) setupLogoutButton(logoutBtn);
+        if (logoutDropdownBtn) setupLogoutButton(logoutDropdownBtn);
+      });
+    </script>
+
+    <!-- Spinner Animation -->
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        padding: 8px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.2s ease;
+        z-index: 1000;
+      }
+      .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+      }
+      .dropdown-item:hover {
+        background-color: #f5f5f5;
+      }
+      .dropdown-item i {
+        width: 18px;
+      }
+    </style>
+  </body>
+</html>
